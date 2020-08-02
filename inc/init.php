@@ -6,7 +6,14 @@ add_action( 'admin_post_ccrest_importer', 'ccrest_woo_filter_actions' );
 add_action( 'admin_post_nopriv_ccrest_woo_filter_actions', 'ccrest_woo_filter_actions' );
 add_action( 'admin_post_ccrest_woo_filter_actions', 'ccrest_woo_filter_actions' );
 function ccrest_woo_filter_actions() {
-  include( plugin_dir_path( __DIR__ ) . 'inc/router.php' );
+  $do = $_POST['do'];
+  if ( empty( $do ) ) {
+    echo '[cCrest Media Repo] No action specified. :(';
+    http_response_code(400);
+    wp_die();
+  }
+  $do();
+  wp_die();
 }
 
 add_action('init', 'ccrest_woo_filter_init');
@@ -41,7 +48,7 @@ function ccrest_custom_toolbar_actions() { ?>
 			jQuery.post(
 				'<?php echo esc_url( admin_url('admin-post.php') ); ?>',
 				{ 
-					action: 'ccrest_importer',
+					action: 'ccrest_woo_filter_actions',
 					do: 'upload_cedarcrest_data',
 				},
 				function(response) {
@@ -80,7 +87,7 @@ function ccrest_woo_filter_enqueue_scripts_styles() {
     wp_enqueue_style('animate_css');
     wp_enqueue_style(PLUGIN_SLUG);
     wp_localize_script( PLUGIN_SLUG, 'wp_data', [
-      'admin_ajax_url' => esc_url( admin_url('admin-post.php')),
+      'ADMIN_AJAX_URL' => esc_url( admin_url('admin-post.php')),
       'PLUGIN_SLUG' => PLUGIN_SLUG,
     ] );
     wp_enqueue_script(PLUGIN_SLUG);

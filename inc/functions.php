@@ -2,6 +2,15 @@
 /*
  * Search & Filter
  */
+function search_products() {
+  $results = ['test', 'test', 'test'];
+  http_response_code (200); 
+  echo json_encode([
+    'status' => 200,
+    'results' => $results
+  ]);
+  exit();
+}
 
 
 /*
