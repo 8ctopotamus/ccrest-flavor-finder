@@ -1,13 +1,15 @@
 (($) => {
   const { PLUGIN_SLUG, ADMIN_AJAX_URL } = wp_data
-  console.log(PLUGIN_SLUG)
+  const $originalResults = $(`.et_pb_blog_grid_wrapper`)
   const $app = $(`#${PLUGIN_SLUG}`)
-  const $form = $app.find(`form`)
-  const $searchInput = $app.find(`#${PLUGIN_SLUG}-search`)
-  const $checkboxes = $app.find('[type=checkbox]')
   const $results = $app.find(`#${PLUGIN_SLUG}-results`)
   const $reset = $app.find(`#${PLUGIN_SLUG}-reset`)
-  const $originalResults = $(`.et_pb_blog_grid_wrapper`)
+  const $modalTrigger = $app.find(`#${PLUGIN_SLUG}-modal-trigger`)
+  const $modal = $(`#${PLUGIN_SLUG}-modal`)
+  const $close = $modal.find(`.close`)
+  const $form = $modal.find(`form`)
+  const $searchInput = $modal.find(`#${PLUGIN_SLUG}-search`)
+  const $checkboxes = $modal.find('[type=checkbox]')
 
   let results = []
 
@@ -68,4 +70,20 @@
   })
 
   $reset.on('click', reset)
+
+  $modalTrigger.on('click', function() {
+    $modal.show()
+  })
+
+  $close.on('click', function() {
+    $modal.fadeOut()
+  })
+
+  window.onclick = function(event) {
+    console.log(event.target)
+    if (event.target == $modal.get(0)) {
+      $modal.fadeOut()
+    }
+  } 
+
 })(jQuery)

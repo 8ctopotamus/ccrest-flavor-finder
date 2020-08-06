@@ -1,5 +1,31 @@
 <?php
 
+
+function renderModal($allergensFilters, $catsFilters) { ?>
+  <div id="<?php echo PLUGIN_SLUG; ?>-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">FIND YOUR FLAVOR</h2>
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form>
+          <input id="<?php PLUGIN_SLUG; ?>-search" type="search" />
+          <button type="submit">Search</button>
+        </form>
+        <button id="<?php PLUGIN_SLUG; ?>-reset">reset</button>
+        <h6>Filter by</h6>
+        <?php echo $catsFilters; ?>
+        <h6>Exclude the following allergens</h6>
+        <?php echo $allergensFilters; ?>
+      </div>
+      <div class="modal-footer">
+        <h3>Modal Footer</h3>
+      </div>
+    </div> 
+  </div>
+<?php }
+
 add_shortcode( PLUGIN_SLUG, 'ccrest_flavor_finder_shorcode_func' );
 function ccrest_flavor_finder_shorcode_func( $atts ) {
   global $wpdb;
@@ -49,16 +75,12 @@ function ccrest_flavor_finder_shorcode_func( $atts ) {
   }
   $catsFilters = '<ul class="'.PLUGIN_SLUG.'-filterset">' . $catsHTML . '</ul>';
 
+  add_action( 'wp_footer', function () use ($allergensFilters, $catsFilters) { 
+    renderModal($allergensFilters, $catsFilters);
+  });
+
   return '<div id="'.PLUGIN_SLUG.'"> 
-    <form>
-      <input id="'.PLUGIN_SLUG.'-search" type="search" />
-      <button type="submit">Search</button>
-    </form>
-    <button id="'.PLUGIN_SLUG.'-reset">reset</button>
-    <h6>Filter by</h6>
-    '.$catsFilters.'
-    <h6>Excludes following allergens</h6>
-    '.$allergensFilters.'
+    <button id="'.PLUGIN_SLUG.'-modal-trigger">FIND YOUR FLAVOR</button>
     <div id="'.PLUGIN_SLUG.'-results"></div>
   </div>';
 }

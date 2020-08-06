@@ -1,5 +1,97 @@
+:root {
+  --ccrest-blue: #43abde;
+}
+
 .ccrest-flavor-finder-filterset {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  list-style-type: !important;
+  list-style-type: none !important;
 }
+
+#ccrest-flavor-finder-modal-trigger {
+  display: block;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 400px;
+  font-size: 34px;
+  background: var(--ccrest-blue);
+  color: white;
+  border: 4px solid #add6ea;
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+#ccrest-flavor-finder-modal-trigger {
+  background: #1b85b9;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4); 
+}
+
+/* The Close Button */
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+} 
+
+ /* Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 16px;
+  background-color: var(--ccrest-blue);
+  color: white !important;
+}
+.modal-header,
+.modal-title {
+  color: white !important;
+}
+
+/* Modal Body */
+.modal-body {padding: 2px 16px;}
+
+/* Modal Footer */
+.modal-footer {
+  padding: 2px 16px;
+  background-color: var(--ccrest-blue);
+  color: white;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.25),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+} 
