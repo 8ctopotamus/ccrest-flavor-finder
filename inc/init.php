@@ -48,7 +48,7 @@ function ccrest_custom_toolbar_actions() { ?>
 			jQuery.post(
 				'<?php echo esc_url( admin_url('admin-post.php') ); ?>',
 				{ 
-					action: 'ccrest_woo_filter_actions',
+					action: 'ccrest_flavor_finder_actions',
 					do: 'upload_cedarcrest_data',
 				},
 				function(response) {
@@ -70,12 +70,12 @@ function ccrest_woo_filter_enqueue_scripts_styles() {
   // check if shorcode is used
   global $post, $wpdb;
 	$shortcode_found = false;
-	if (has_shortcode($post->post_content, 'ccrest-woo-filter') ) {
+	if (has_shortcode($post->post_content, 'ccrest-flavor-finder') ) {
 		 $shortcode_found = true;
 	} else if ( isset($post->ID) ) { // checks post meta
 		$result = $wpdb->get_var( $wpdb->prepare(
 			"SELECT count(*) FROM $wpdb->postmeta " .
-			"WHERE post_id = %d and meta_value LIKE '%%ccrest-woo-filter%%'", $post->ID ) );
+			"WHERE post_id = %d and meta_value LIKE '%%ccrest-flavor-finder%%'", $post->ID ) );
 		$shortcode_found = ! empty( $result );
   }
   
