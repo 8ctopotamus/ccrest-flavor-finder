@@ -8,15 +8,17 @@ function renderModal($allergensFilters, $catsFilters) { ?>
         <span class="close">&times;</span>
       </div>
       <div class="modal-body">
-        <div class="ccrest-flavor-finder-search-wrap">
-          <input id="<?php echo PLUGIN_SLUG; ?>-search" type="search" />
-          <button id="submit">Search</button>
-          <button id="<?php echo PLUGIN_SLUG; ?>-reset-filters">reset</button>
-        </div>
-        <h3>Filter by</h3>
-        <?php echo $catsFilters; ?>
-        <h3>Exclude the following allergens</h3>
-        <?php echo $allergensFilters; ?>
+        <form>
+          <div class="ccrest-flavor-finder-search-wrap">
+            <input id="<?php echo PLUGIN_SLUG; ?>-search" type="search" />
+            <button type="submit">Search</button>
+            <button id="<?php echo PLUGIN_SLUG; ?>-reset-filters" type-="button">reset</button>
+          </div>
+          <h3>Filter by</h3>
+          <?php echo $catsFilters; ?>
+          <h3>Exclude the following allergens</h3>
+          <?php echo $allergensFilters; ?>
+        </form>
       </div>
     </div> 
   </div>
@@ -64,7 +66,7 @@ function ccrest_flavor_finder_shorcode_func( $atts ) {
   if( !empty($product_categories) ) {
     foreach ($product_categories as $key => $category) {
       $catsHTML .= '<li>';
-      $catsHTML .= '<input type="checkbox" id="'.$category->slug.'" name="'.$category->slug.'" value="'.$category->slug.'">';
+      $catsHTML .= '<input type="checkbox" id="'.$category->slug.'" name="'.$category->slug.'" value="'.$category->slug.'" class="cat">';
       $catsHTML .= '<label for="'.$category->slug.'">' . $category->name . '</label><br>';
       $catsHTML .=  '</li>';
     }

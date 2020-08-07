@@ -11,9 +11,9 @@
   const $modal = $(`#${PLUGIN_SLUG}-modal`)
   const $resetFilters = $modal.find(`#${PLUGIN_SLUG}-reset-filters`)
   const $close = $modal.find(`.close`)
-  const $submit = $modal.find(`#submit`)
+  const $searchForm = $modal.find(`form`)
   const $searchInput = $modal.find(`#${PLUGIN_SLUG}-search`)
-  const $checkboxes = $modal.find('[type=checkbox]')
+  const $checkboxes = $modal.find('[type=checkbox].cat')
 
   let results = []
 
@@ -31,7 +31,8 @@
     $originalResults.fadeIn()
   }
 
-  const resetFilters = () => {
+  const resetFilters = e => {
+    e.preventDefault()
     $searchInput.val('')
     $checkboxes.each(function() {
       $(this).attr('checked', false)
@@ -59,7 +60,7 @@
     $results.html(newResultsHTML)
   }
 
-  $submit.on(`click`, e => {
+  $searchForm.on(`submit`, e => {
     e.preventDefault()
     setLoading(true)
     $results.empty()
