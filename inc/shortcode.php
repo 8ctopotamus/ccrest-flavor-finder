@@ -1,6 +1,5 @@
 <?php
 
-
 function renderModal($allergensFilters, $catsFilters) { ?>
   <div id="<?php echo PLUGIN_SLUG; ?>-modal" class="modal">
     <div class="modal-content">
@@ -9,18 +8,15 @@ function renderModal($allergensFilters, $catsFilters) { ?>
         <span class="close">&times;</span>
       </div>
       <div class="modal-body">
-        <form>
-          <input id="<?php PLUGIN_SLUG; ?>-search" type="search" />
-          <button type="submit">Search</button>
-        </form>
-        <button id="<?php PLUGIN_SLUG; ?>-reset">reset</button>
-        <h6>Filter by</h6>
+        <div class="ccrest-flavor-finder-search-wrap">
+          <input id="<?php echo PLUGIN_SLUG; ?>-search" type="search" />
+          <button id="submit">Search</button>
+          <button id="<?php echo PLUGIN_SLUG; ?>-reset-filters">reset</button>
+        </div>
+        <h3>Filter by</h3>
         <?php echo $catsFilters; ?>
-        <h6>Exclude the following allergens</h6>
+        <h3>Exclude the following allergens</h3>
         <?php echo $allergensFilters; ?>
-      </div>
-      <div class="modal-footer">
-        <h3>Modal Footer</h3>
       </div>
     </div> 
   </div>
@@ -81,6 +77,13 @@ function ccrest_flavor_finder_shorcode_func( $atts ) {
 
   return '<div id="'.PLUGIN_SLUG.'"> 
     <button id="'.PLUGIN_SLUG.'-modal-trigger">FIND YOUR FLAVOR</button>
+    
+    <div class="loader">Loading...</div>
+    
+    <div id="'.PLUGIN_SLUG.'-results-stats">
+      <h4><span class="count"></span> results</h3>
+      <button id="'.PLUGIN_SLUG.'-reset-results">RESET</button>
+    </div>
     <div id="'.PLUGIN_SLUG.'-results"></div>
   </div>';
 }

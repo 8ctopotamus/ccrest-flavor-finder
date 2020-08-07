@@ -62,7 +62,9 @@ function search_products() {
       $product   = wc_get_product( get_the_ID() );
       $image_id  = $product->get_image_id();
       $image_url = wp_get_attachment_image_url( $image_id, 'medium' );
-      $image_url = $image_url ? $image_url : 'https://via.placeholder.com/1550x969/O';
+      $image_url = $image_url 
+        ? $image_url 
+        : plugin_dir_url(__DIR__) . 'img/placeholder.jpg';
       $results['data'][] = [
         'title' => get_the_title(),
         'permalink' => get_the_permalink(),
