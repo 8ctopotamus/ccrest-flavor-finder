@@ -1,7 +1,7 @@
 <?php
 
 function renderModal($allergensFilters, $catsFilters) { ?>
-  <div id="<?php echo PLUGIN_SLUG; ?>-modal" class="modal">
+  <div id="<?php echo CCREST_FLAVOR_FINDER_PLUGIN_SLUG; ?>-modal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title">FIND YOUR FLAVOR</h2>
@@ -10,9 +10,9 @@ function renderModal($allergensFilters, $catsFilters) { ?>
       <div class="modal-body">
         <form>
           <div class="ccrest-flavor-finder-search-wrap">
-            <input id="<?php echo PLUGIN_SLUG; ?>-search" type="search" />
+            <input id="<?php echo CCREST_FLAVOR_FINDER_PLUGIN_SLUG; ?>-search" type="search" />
             <button type="submit">Search</button>
-            <button id="<?php echo PLUGIN_SLUG; ?>-reset-filters" type-="button">reset</button>
+            <button id="<?php echo CCREST_FLAVOR_FINDER_PLUGIN_SLUG; ?>-reset-filters" type-="button">reset</button>
           </div>
           <h3>Filter by</h3>
           <?php echo $catsFilters; ?>
@@ -24,7 +24,7 @@ function renderModal($allergensFilters, $catsFilters) { ?>
   </div>
 <?php }
 
-add_shortcode( PLUGIN_SLUG, 'ccrest_flavor_finder_shorcode_func' );
+add_shortcode( CCREST_FLAVOR_FINDER_PLUGIN_SLUG, 'ccrest_flavor_finder_shorcode_func' );
 function ccrest_flavor_finder_shorcode_func( $atts ) {
   global $wpdb;
  
@@ -52,7 +52,7 @@ function ccrest_flavor_finder_shorcode_func( $atts ) {
     $allergensHTML .= '<label for="'.$allergen.'">' . $allergen . '</label><br>';
     $allergensHTML .=  '</li>';
   }
-  $allergensFilters = '<ul class="'.PLUGIN_SLUG.'-filterset">' . $allergensHTML . '</ul>';
+  $allergensFilters = '<ul class="'.CCREST_FLAVOR_FINDER_PLUGIN_SLUG.'-filterset">' . $allergensHTML . '</ul>';
 
   // build category filter options
   $cat_args = array(
@@ -71,21 +71,21 @@ function ccrest_flavor_finder_shorcode_func( $atts ) {
       $catsHTML .=  '</li>';
     }
   }
-  $catsFilters = '<ul class="'.PLUGIN_SLUG.'-filterset">' . $catsHTML . '</ul>';
+  $catsFilters = '<ul class="'.CCREST_FLAVOR_FINDER_PLUGIN_SLUG.'-filterset">' . $catsHTML . '</ul>';
 
   add_action( 'wp_footer', function () use ($allergensFilters, $catsFilters) { 
     renderModal($allergensFilters, $catsFilters);
   });
 
-  return '<div id="'.PLUGIN_SLUG.'"> 
-    <button id="'.PLUGIN_SLUG.'-modal-trigger">FIND YOUR FLAVOR</button>
+  return '<div id="'.CCREST_FLAVOR_FINDER_PLUGIN_SLUG.'"> 
+    <button id="'.CCREST_FLAVOR_FINDER_PLUGIN_SLUG.'-modal-trigger">FIND YOUR FLAVOR</button>
     
     <div class="loader">Loading...</div>
     
-    <div id="'.PLUGIN_SLUG.'-results-stats">
+    <div id="'.CCREST_FLAVOR_FINDER_PLUGIN_SLUG.'-results-stats">
       <h4><span class="count"></span> results</h3>
-      <button id="'.PLUGIN_SLUG.'-reset-results">RESET</button>
+      <button id="'.CCREST_FLAVOR_FINDER_PLUGIN_SLUG.'-reset-results">RESET</button>
     </div>
-    <div id="'.PLUGIN_SLUG.'-results"></div>
+    <div id="'.CCREST_FLAVOR_FINDER_PLUGIN_SLUG.'-results"></div>
   </div>';
 }

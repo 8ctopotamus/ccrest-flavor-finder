@@ -1,7 +1,7 @@
 <?php
 /*
   Plugin Name: cCrest Flavor Finder
-  Plugin URI:  https://github.com/8ctopotamus/ccrest-woo-filter
+  Plugin URI:  https://github.com/8ctopotamus/ccrest-flavor-finder
   Description: A WooCommerce Product Filter
   Version:     1.0
   Author:      @8ctopotamus
@@ -12,7 +12,7 @@
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-define('PLUGIN_SLUG', 'ccrest-flavor-finder');
+define('CCREST_FLAVOR_FINDER_PLUGIN_SLUG', 'ccrest-flavor-finder');
 
 include( plugin_dir_path( __FILE__ ) . 'inc/functions.php' );
 include( plugin_dir_path( __FILE__ ) . 'inc/shortcode.php' );

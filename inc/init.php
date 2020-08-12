@@ -23,7 +23,7 @@ function ccrest_woo_filter_init() {
     add_action( 'admin_notices', function() {
       ?>
         <div class="update-nag notice">
-          <p><?php _e( '<strong>[cCrest Woo Filter]:</strong> Please install the <a href="https://www.advancedcustomfields.com/" target="_blank">Advanced Custom Fields PRO</a>. It is required for this plugin to work properly.', PLUGIN_SLUG); ?></p>
+          <p><?php _e( '<strong>[cCrest Woo Filter]:</strong> Please install the <a href="https://www.advancedcustomfields.com/" target="_blank">Advanced Custom Fields PRO</a>. It is required for this plugin to work properly.', CCREST_FLAVOR_FINDER_PLUGIN_SLUG); ?></p>
         </div>
       <?php
     } );
@@ -80,17 +80,17 @@ function ccrest_woo_filter_enqueue_scripts_styles() {
   }
   
   wp_register_style( 'animate_css', '//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css' );
-  wp_register_style( PLUGIN_SLUG, plugin_dir_url(__DIR__) .'css/style.css' );
-  wp_register_script( PLUGIN_SLUG, plugin_dir_url(__DIR__) .'js/app.js', array('jquery'), false, true );
+  wp_register_style( CCREST_FLAVOR_FINDER_PLUGIN_SLUG, plugin_dir_url(__DIR__) .'css/style.css' );
+  wp_register_script( CCREST_FLAVOR_FINDER_PLUGIN_SLUG, plugin_dir_url(__DIR__) .'js/app.js', array('jquery'), false, true );
 
   if ( $shortcode_found ) {
     wp_enqueue_style('animate_css');
-    wp_enqueue_style(PLUGIN_SLUG);
-    wp_localize_script( PLUGIN_SLUG, 'wp_data', [
+    wp_enqueue_style(CCREST_FLAVOR_FINDER_PLUGIN_SLUG);
+    wp_localize_script( CCREST_FLAVOR_FINDER_PLUGIN_SLUG, 'wp_data', [
       'ADMIN_AJAX_URL' => esc_url( admin_url('admin-post.php')),
-      'PLUGIN_SLUG' => PLUGIN_SLUG,
+      'CCREST_FLAVOR_FINDER_PLUGIN_SLUG' => CCREST_FLAVOR_FINDER_PLUGIN_SLUG,
     ] );
-    wp_enqueue_script(PLUGIN_SLUG);
+    wp_enqueue_script(CCREST_FLAVOR_FINDER_PLUGIN_SLUG);
   }
 }
 add_action('wp_enqueue_scripts', 'ccrest_woo_filter_enqueue_scripts_styles');
