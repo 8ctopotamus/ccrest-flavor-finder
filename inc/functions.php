@@ -5,6 +5,7 @@
 function search_products() {
 
   $cats = !empty($_POST['cats']) ? $_POST['cats'] : false;
+  $allergens = !empty($_POST['allergens']) ? $_POST['allergens'] : false;
   // $postsPerPage = $_POST['postsPerPage'] ? intval($_POST['postsPerPage']) : 12;
   // $paged = $_POST['paged'] ? intval($_POST['paged']) : 0;
   // $includeMeta = $_POST['includeMeta'] === 'true' ? boolval($_POST['includeMeta']) : false;
@@ -26,50 +27,36 @@ function search_products() {
     's' => $_POST['s'],
     'product_cat' => $cats,
   );
-  
-  // if ($cats):
-  //   $search_args['tax_query'] = array(
-  //     array (
-  //       'taxonomy' => 'product_cat',
-  //       'terms' => $cats,
-  //     )
-  //   );
-  // endif;
-  
-  // if ($includeMeta):
-  //   $search_args['meta_query'] = array(
-  //     'relation'=> 'AND',
-  //   );
-  //   foreach ($fieldsWeCareAbout as $field):
-  //     if ($_POST[$field]):
-  //       $compare = $field === 'minimum_tank_size' ? '>=' : '=';
-  //       $type = $field === 'minimum_tank_size' ? 'NUMERIC' : 'CHAR';
-  //       $search_args['meta_query'][] = [
-  //         'key' => $field,
-  //         'value' => $_POST[$field],
-  //         'compare' => $compare,
-  //         'type' => $type
-  //       ];
-  //     endif;
-  //   endforeach;
-  // endif;
-  
+    
   $query = new WP_Query( $search_args );
   
   if ( $query->have_posts() ):
     $results['total'] = $query->found_posts;
     while ( $query->have_posts() ) : $query->the_post();
+      // if product includes allergen, skip it
+      $allergensString = strtolower ( get_field('allergens', get_the_id()) );
+      if ($allergens && count($allergens) > 0) {
+        $found = false;
+        foreach ($allergens as $al) {
+          if (strpos($allergensString, strtolower($al)) !== false) {
+            $found = true;
+          }
+        }
+        if ($found) continue;
+      }
+      // create product result
       $product   = wc_get_product( get_the_ID() );
       $image_id  = $product->get_image_id();
       $image_url = wp_get_attachment_image_url( $image_id, 'medium' );
       $image_url = $image_url 
         ? $image_url 
         : plugin_dir_url(__DIR__) . 'img/placeholder.jpg';
-      $results['data'][] = [
+      $prod = [
         'title' => get_the_title(),
         'permalink' => get_the_permalink(),
         'thumbnail' => $image_url,
       ];
+      $results['data'][] = $prod;
       wp_reset_postdata();
     endwhile;
   endif;

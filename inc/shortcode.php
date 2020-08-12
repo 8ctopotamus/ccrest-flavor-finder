@@ -48,7 +48,7 @@ function ccrest_flavor_finder_shorcode_func( $atts ) {
   $allergensHTML = '';
   foreach($allergens as $allergen) {
     $allergensHTML .= '<li>';
-    $allergensHTML .= '<input type="checkbox" id="'.$allergen.'" name="'.$allergen.'" value="'.$allergen.'">';
+    $allergensHTML .= '<input class="allergen" id="'.$allergen.'" name="'.$allergen.'" value="'.$allergen.'" type="checkbox" >';
     $allergensHTML .= '<label for="'.$allergen.'">' . $allergen . '</label><br>';
     $allergensHTML .=  '</li>';
   }
@@ -66,7 +66,7 @@ function ccrest_flavor_finder_shorcode_func( $atts ) {
   if( !empty($product_categories) ) {
     foreach ($product_categories as $key => $category) {
       $catsHTML .= '<li>';
-      $catsHTML .= '<input type="checkbox" id="'.$category->slug.'" name="'.$category->slug.'" value="'.$category->slug.'" class="cat">';
+      $catsHTML .= '<input class="cat" id="'.$category->slug.'" name="'.$category->slug.'" value="'.$category->slug.'" type="checkbox">';
       $catsHTML .= '<label for="'.$category->slug.'">' . $category->name . '</label><br>';
       $catsHTML .=  '</li>';
     }

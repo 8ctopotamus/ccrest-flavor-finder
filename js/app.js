@@ -13,7 +13,9 @@
   const $close = $modal.find(`.close`)
   const $searchForm = $modal.find(`form`)
   const $searchInput = $modal.find(`#${PLUGIN_SLUG}-search`)
-  const $checkboxes = $modal.find('[type=checkbox].cat')
+  const $checkboxes = $modal.find('[type=checkbox]')
+  const $catCheckboxes = $modal.find('[type=checkbox].cat')
+  const $allergenCheckboxes = $modal.find('[type=checkbox].allergen')
 
   let results = []
 
@@ -67,11 +69,15 @@
     $originalResults.hide()
     closeModal()
     const s = $searchInput.val().trim()
-    const cats = $checkboxes
+    const cats = $catCheckboxes
       .filter(function() { return $(this).attr('checked') })
-      .map(function() { return $(this).val() })
+      .map(function() { return $(this).val().trim() })
       .get()
       .join(',')
+    const allergens = $allergenCheckboxes
+      .filter(function() { return $(this).attr('checked') })
+      .map(function() { return $(this).val().trim() })
+      .get()
     $.ajax({
       url: ADMIN_AJAX_URL,
       type: `POST`,
@@ -80,6 +86,7 @@
         do: `search_products`,
         s,
         cats,
+        allergens,
       }
     })
     .then(res => {
@@ -87,6 +94,7 @@
       if (json && json.status === 200) {
         results = json.data
         toggleResultStatsDisplay(true)
+        $results.show()
         $count.text(results.length)
         updateResults()
       }
