@@ -48,11 +48,13 @@ function ccrest_custom_toolbar_actions() { ?>
 			jQuery.post(
 				'<?php echo esc_url( admin_url('admin-post.php') ); ?>',
 				{ 
-					action: 'ccrest_flavor_finder_actions',
+					action: 'ccrest_woo_filter_actions',
 					do: 'upload_cedarcrest_data',
 				},
 				function(response) {
-					const res = JSON.parse(response)
+          // console.log(response)
+          const res = JSON.parse(response)
+          console.log(res)
 					if (res.success === true) {
             $btn.text('Cedarcrest data imported 👍')
 					} else {

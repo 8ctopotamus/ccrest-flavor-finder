@@ -16,8 +16,8 @@ function renderModal($allergensFilters, $catsFilters) { ?>
           </div>
           <h3>Filter by</h3>
           <?php echo $catsFilters; ?>
-          <h3>Exclude the following allergens</h3>
-          <?php echo $allergensFilters; ?>
+          <!-- <h3>Exclude the following allergens</h3>
+          <?php echo $allergensFilters; ?> -->
         </form>
       </div>
     </div> 

@@ -89,10 +89,14 @@ function delete_all_ccrest_products(){
  
 function upload_cedarcrest_data() {
   delete_all_ccrest_products();
-  $csv = plugin_dir_url( __DIR__ ) . 'data/products.csv';
+  $csv = plugin_dir_url( __DIR__ ) . 'data/products_latest.csv';
   $file = fopen($csv,"r");
   $count = 0;
   $headers = [];
+  $debug = [];
+
+  $products = [];
+
   while( !feof($file) ) {
     $row = fgetcsv($file);
     // set headers
@@ -110,34 +114,61 @@ function upload_cedarcrest_data() {
     $acfData = [];
     $cats = [];
     $colCount = 0;
-    foreach($row as $col) {
-      $key = $headers[$colCount];
-      if ($key === 'flavor') {
-       $args['post_title'] = $col;
-      } else if (strpos($key, 'category--') !== false) {
-        if ( $col === 'x' ) {
-          $cats[] = str_replace('category--', '', $key);
-        }
-      } else {
-        $acfData[$key] = $col;
-      }
-      $colCount++;
-    }
-    // create new plow post
-    $newPostId = wp_insert_post( $args );
-    // populate ACF fields
-    foreach($acfData as $key => $val) {
-      update_field($key, $val, $newPostId);
-    }
-    // add cats to post
-    $catSlugs = [];
-    foreach ($cats as $cat) {
-      $catSlugs[] = strtolower(preg_replace('/\s+/', '_', $cat));
-    }
-    wp_set_object_terms($newPostId, $catSlugs, 'product_cat', true);
+
+
+
+    $title = $row[0];
+    $size = $row[1];
+    // foreach($row as $col) {
+    //   $key = $headers[$colCount];
+    //   if ($key === 'flavor') {
+    //    $args['post_title'] = $col;
+    //   } 
+    //   else if ($key === 'size') {
+    //     $size = $col;
+    //   } 
+    //   else if (strpos($key, 'category--') !== false) {
+    //     if ( $col === 'x' ) {
+    //       $cats[] = str_replace('category--', '', $key);
+    //     }
+    //   } else {
+    //     $acfData[$key] = $col;
+    //   }
+    //   $colCount++;
+    // }
+    // // $debug[] = $acfData;
+
+    // // create new plow post
+    // $newPostId = wp_insert_post( $args );
+    
+    // // add cats to post
+    // $catSlugs = [];
+    // foreach ($cats as $cat) {
+    //   $catSlugs[] = strtolower(preg_replace('/\s+/', '_', $cat));
+    // }
+    // wp_set_object_terms($newPostId, $catSlugs, 'product_cat', true);
+
+
+    // populate ACF Repeater fields
+    // foreach($acfData as $key => $val) {
+    //   update_field($key, $val, $newPostId);
+    // }
+
+
     $count++;
   }
   fclose($file);
-  echo json_encode(['success' => true]);
+
+  // Get an instance of the WC_Product object
+  // $product = new WC_Product( $product_id );
+
+  // // Set product prices
+  // $product->set_sale_price( $sale_price );
+  // $product->set_price( $price );
+
+  // // Save data and update caches
+  // $product->save();
+
+  echo json_encode(['success' => true, 'debug' => $debug]);
   exit();
 }
