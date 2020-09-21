@@ -170,6 +170,17 @@ function upload_cedarcrest_data() {
     
     // populate ACF Repeater fields
     if ($product['sizes']) {
+
+      // somehow we need to do it by this order:
+      // $order = ['three_gallon', 'scround', 'quart', 'pint', 'cup'];
+      // foreach($order as $o) {
+      //   $size = $product['sizes'][$o];
+      //   if ($size) {
+      //     $debug[] = $size;
+      //     // add_row('sizes', $fields, $newPostId);
+      //   }
+      // }
+
       foreach($product['sizes'] as $size => $fields) {
         add_row('sizes', $fields, $newPostId);
       }

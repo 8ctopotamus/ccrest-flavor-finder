@@ -53,7 +53,6 @@ function ccrest_custom_toolbar_actions() { ?>
 				},
 				function(response) {
           console.log(response)
-
           const res = JSON.parse(response)
 					if (res && res.success === true) {
             console.log(res)
