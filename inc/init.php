@@ -52,10 +52,11 @@ function ccrest_custom_toolbar_actions() { ?>
 					do: 'upload_cedarcrest_data',
 				},
 				function(response) {
-          // console.log(response)
+          console.log(response)
+
           const res = JSON.parse(response)
-          console.log(res)
-					if (res.success === true) {
+					if (res && res.success === true) {
+            console.log(res)
             $btn.text('Cedarcrest data imported 👍')
 					} else {
             $btn.text('Import Cedarcrest Data')
