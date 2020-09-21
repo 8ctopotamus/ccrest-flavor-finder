@@ -1,9 +1,28 @@
 <?php
+
+/* 
+ * Template Helper Functions
+ */
+function ccff_find_size($target) {
+  $sizes_repeater = get_field('sizes');
+  $data = false;
+  if ($sizes_repeater) {
+    foreach($sizes_repeater as $acfFields) {
+      $match = $acfFields['size'] === $target;
+      if ($match) {
+        $data = $acfFields;
+        break;
+      }
+    }
+  }
+  return $data;
+}
+
+
 /*
- * Search & Filter
+ * Search & Filter API endpoint
  */
 function search_products() {
-
   $cats = !empty($_POST['cats']) ? $_POST['cats'] : false;
   $allergens = !empty($_POST['allergens']) ? $_POST['allergens'] : false;
   // $postsPerPage = $_POST['postsPerPage'] ? intval($_POST['postsPerPage']) : 12;
