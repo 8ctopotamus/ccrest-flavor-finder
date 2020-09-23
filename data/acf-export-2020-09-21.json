@@ -4,7 +4,7 @@
         "title": "CedarCrest Products",
         "fields": [
             {
-                "key": "field_5f67d5db5bd6f",
+                "key": "field_5f67d4a05bc94",
                 "label": "Sizes",
                 "name": "sizes",
                 "type": "repeater",
@@ -16,14 +16,14 @@
                     "class": "",
                     "id": ""
                 },
-                "collapsed": "field_5f67d5db5bd71",
+                "collapsed": "field_5f67d4a05bc96",
                 "min": 0,
                 "max": 0,
                 "layout": "block",
-                "button_label": "Add size",
+                "button_label": "Add Size",
                 "sub_fields": [
                     {
-                        "key": "field_5f67d5db5bd70",
+                        "key": "field_5f67d4a05bc95",
                         "label": "Flavor",
                         "name": "flavor",
                         "type": "text",
@@ -42,7 +42,7 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5db5bd71",
+                        "key": "field_5f67d4a05bc96",
                         "label": "Size",
                         "name": "size",
                         "type": "select",
@@ -55,9 +55,9 @@
                             "id": ""
                         },
                         "choices": {
-                            "smart snacks": "smart snacks",
-                            "cups": "cups",
+                            "cup": "cup",
                             "pint": "pint",
+                            "quart": "quart",
                             "scround": "scround",
                             "three_gallon": "three_gallon"
                         },
@@ -70,31 +70,7 @@
                         "placeholder": ""
                     },
                     {
-                        "key": "field_5f68f27bb1387",
-                        "label": "Size Image",
-                        "name": "size_image",
-                        "type": "image",
-                        "instructions": "",
-                        "required": 0,
-                        "conditional_logic": 0,
-                        "wrapper": {
-                            "width": "",
-                            "class": "",
-                            "id": ""
-                        },
-                        "return_format": "array",
-                        "preview_size": "medium",
-                        "library": "all",
-                        "min_width": "",
-                        "min_height": "",
-                        "min_size": "",
-                        "max_width": "",
-                        "max_height": "",
-                        "max_size": "",
-                        "mime_types": ""
-                    },
-                    {
-                        "key": "field_5f67d5db5bd72",
+                        "key": "field_5f67d4a05bc97",
                         "label": "Product Description",
                         "name": "product_description",
                         "type": "textarea",
@@ -113,7 +89,7 @@
                         "new_lines": ""
                     },
                     {
-                        "key": "field_5f67d5db5bd73",
+                        "key": "field_5f67d4a05bc98",
                         "label": "Ingredients",
                         "name": "ingredients",
                         "type": "textarea",
@@ -132,7 +108,7 @@
                         "new_lines": ""
                     },
                     {
-                        "key": "field_5f67d5db5bd74",
+                        "key": "field_5f67d4a05bc99",
                         "label": "Allergens",
                         "name": "allergens",
                         "type": "text",
@@ -151,7 +127,7 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5db5bd75",
+                        "key": "field_5f67d4a05bc9a",
                         "label": "Allergy Icons",
                         "name": "allergy_icons",
                         "type": "checkbox",
@@ -177,9 +153,33 @@
                         "return_format": ""
                     },
                     {
-                        "key": "field_5f67d5db5bd7d",
+                        "key": "field_5f67d4a05bc9b",
+                        "label": "Image",
+                        "name": "image",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "url",
+                        "preview_size": "medium",
+                        "library": "all",
+                        "min_width": "",
+                        "min_height": "",
+                        "min_size": "",
+                        "max_width": "",
+                        "max_height": "",
+                        "max_size": "",
+                        "mime_types": ""
+                    },
+                    {
+                        "key": "field_5f67d4a05bca2",
                         "label": "Servings Per Container",
-                        "name": "servings_per_container",
+                        "name": "servings_per_containter",
                         "type": "text",
                         "instructions": "",
                         "required": 0,
@@ -196,9 +196,9 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5db5bd7e",
-                        "label": "Servings Size",
-                        "name": "servings_size",
+                        "key": "field_5f67d4a05bca3",
+                        "label": "Serving Size",
+                        "name": "serving_size",
                         "type": "text",
                         "instructions": "",
                         "required": 0,
@@ -215,7 +215,7 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd7f",
+                        "key": "field_5f67d4a05bca4",
                         "label": "Calories Per Serving",
                         "name": "calories_per_serving",
                         "type": "text",
@@ -234,7 +234,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd80",
+                        "key": "field_5f67d4a05bca5",
+                        "label": "Calories Per Pint",
+                        "name": "calories_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a05bca6",
                         "label": "Total Fat Per Serving",
                         "name": "total_fat_per_serving",
                         "type": "text",
@@ -253,7 +272,45 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd81",
+                        "key": "field_5f67d4a15bca7",
+                        "label": "Total Fat Per Pint",
+                        "name": "total_fat_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bca8",
+                        "label": "Total Fat % Daily Value Per Pint",
+                        "name": "total_fat_daily_value_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bca9",
                         "label": "Total Fat % Daily Value Per Serving",
                         "name": "total_fat_daily_value_per_serving",
                         "type": "text",
@@ -272,7 +329,7 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd82",
+                        "key": "field_5f67d4a15bcaa",
                         "label": "Saturated Fat Per Serving",
                         "name": "saturated_fat_per_serving",
                         "type": "text",
@@ -291,7 +348,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd83",
+                        "key": "field_5f67d4a15bcab",
+                        "label": "Saturated Fat Per Pint",
+                        "name": "saturated_fat_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcac",
                         "label": "Saturated Fat % Daily Value Per Serving",
                         "name": "saturated_fat_daily_value_per_serving",
                         "type": "text",
@@ -310,7 +386,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd84",
+                        "key": "field_5f67d4a15bcad",
+                        "label": "Saturated Fat % Daily Value Per Pint",
+                        "name": "saturated_fat_daily_value_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcae",
                         "label": "Trans Fat Per Serving",
                         "name": "trans_fat_per_serving",
                         "type": "text",
@@ -329,7 +424,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd85",
+                        "key": "field_5f67d4a15bcaf",
+                        "label": "Trans Fat Per Pint",
+                        "name": "trans_fat_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcb0",
                         "label": "Trans Fat % Daily Value Per Serving",
                         "name": "trans_fat_daily_value_per_serving",
                         "type": "text",
@@ -348,7 +462,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd86",
+                        "key": "field_5f67d4a15bcb1",
+                        "label": "Trans Fat % Daily Value Per Pint",
+                        "name": "trans_fat_daily_value_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcb2",
                         "label": "Cholesterol Per Serving",
                         "name": "cholesterol_per_serving",
                         "type": "text",
@@ -367,7 +500,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd87",
+                        "key": "field_5f67d4a15bcb3",
+                        "label": "Cholesterol Per Pint",
+                        "name": "cholesterol_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcb4",
                         "label": "Cholesterol % Daily Value Per Serving",
                         "name": "cholesterol_daily_value_per_serving",
                         "type": "text",
@@ -386,7 +538,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd88",
+                        "key": "field_5f67d4a15bcb5",
+                        "label": "Cholesterol % Daily Value Per Pint",
+                        "name": "cholesterol_daily_value_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcb6",
                         "label": "Sodium Per Serving",
                         "name": "sodium_per_serving",
                         "type": "text",
@@ -405,7 +576,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd89",
+                        "key": "field_5f67d4a15bcb7",
+                        "label": "Sodium Per Pint",
+                        "name": "sodium_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcb8",
                         "label": "Sodium % Daily Value Per Serving",
                         "name": "sodium_daily_value_per_serving",
                         "type": "text",
@@ -424,7 +614,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd8a",
+                        "key": "field_5f67d4a15bcb9",
+                        "label": "Sodium % Daily Value Per Pint",
+                        "name": "sodium_daily_value_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcba",
                         "label": "Total Carbohydrate Per Serving",
                         "name": "total_carbohydrate_per_serving",
                         "type": "text",
@@ -443,7 +652,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd8b",
+                        "key": "field_5f67d4a15bcbb",
+                        "label": "Total Carbohydrate Per Pint",
+                        "name": "total_carbohydrate_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcbc",
                         "label": "Carbohydrate % Daily Value Per Serving",
                         "name": "carbohydrate_daily_value_per_serving",
                         "type": "text",
@@ -462,7 +690,7 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd8c",
+                        "key": "field_5f67d4a15bcbd",
                         "label": "Dietary Fiber Per Serving",
                         "name": "dietary_fiber_per_serving",
                         "type": "text",
@@ -481,7 +709,45 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd8d",
+                        "key": "field_5f67d4a15bcbe",
+                        "label": "Dietary Fiber Per Pint",
+                        "name": "dietary_fiber_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcbf",
+                        "label": "Carbohydrate % Daily Value Per Pint",
+                        "name": "carbohydrate_daily_value_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcc0",
                         "label": "Dietary Fiber % Daily Value Per Serving",
                         "name": "dietary_fiber_daily_value_per_serving",
                         "type": "text",
@@ -500,7 +766,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd8e",
+                        "key": "field_5f67d4a15bcc1",
+                        "label": "Dietary Fiber % Daily Value Per Pint",
+                        "name": "dietary_fiber_daily_value_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcc2",
                         "label": "Total Sugars Per Serving",
                         "name": "total_sugars_per_serving",
                         "type": "text",
@@ -519,7 +804,45 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd8f",
+                        "key": "field_5f67d4a15bcc3",
+                        "label": "Total Sugars Per Pint",
+                        "name": "total_sugars_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcc4",
+                        "label": "Includes Added Sugars Per Pint",
+                        "name": "includes_added_sugars_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcc5",
                         "label": "Includes Added Sugars Per Serving",
                         "name": "includes_added_sugars_per_serving",
                         "type": "text",
@@ -538,7 +861,7 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd90",
+                        "key": "field_5f67d4a15bcc6",
                         "label": "% Daily Value added sugars Per Serving",
                         "name": "daily_value_added_sugars_per_serving",
                         "type": "text",
@@ -557,7 +880,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd91",
+                        "key": "field_5f67d4a15bcc7",
+                        "label": "% Daily Value added sugars Per Pint",
+                        "name": "daily_value_added_sugars_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcc8",
                         "label": "Protein Per Serving",
                         "name": "protein_per_serving",
                         "type": "text",
@@ -576,7 +918,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd92",
+                        "key": "field_5f67d4a15bcc9",
+                        "label": "Protein Per Pint",
+                        "name": "protein_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcca",
                         "label": "Protein % Daily Value Per Serving",
                         "name": "protein_daily_value_per_serving",
                         "type": "text",
@@ -595,7 +956,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd93",
+                        "key": "field_5f67d4a15bccb",
+                        "label": "Protein % Daily Value Per Pint",
+                        "name": "protein_daily_value_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bccc",
                         "label": "VitaminD Per Serving",
                         "name": "vitamind_per_serving",
                         "type": "text",
@@ -614,7 +994,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd94",
+                        "key": "field_5f67d4a15bccd",
+                        "label": "Vitamin D Per Pint",
+                        "name": "vitamind_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcce",
                         "label": "Vitamin D % Daily Value Per Serving",
                         "name": "vitamind_daily_value_per_serving",
                         "type": "text",
@@ -633,7 +1032,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd95",
+                        "key": "field_5f67d4a15bccf",
+                        "label": "Vitamin D % Daily Value Per Pint",
+                        "name": "vitamind_daily_value_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcd0",
                         "label": "Calcium Per Serving",
                         "name": "calcium_per_serving",
                         "type": "text",
@@ -652,7 +1070,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd96",
+                        "key": "field_5f67d4a15bcd1",
+                        "label": "Calcium Per Pint",
+                        "name": "calcium_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcd2",
                         "label": "Calcium % Daily Value Per Serving",
                         "name": "calcium_daily_value_per_serving",
                         "type": "text",
@@ -671,7 +1108,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd97",
+                        "key": "field_5f67d4a15bcd3",
+                        "label": "Calcium % Daily Value Per Pint",
+                        "name": "calcium_daily_value_per_pint_",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcd4",
                         "label": "Iron Per Serving",
                         "name": "iron_per_serving",
                         "type": "text",
@@ -690,7 +1146,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd98",
+                        "key": "field_5f67d4a15bcd5",
+                        "label": "Iron Per Pint",
+                        "name": "iron_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcd6",
                         "label": "Iron % Daily Value Per Serving",
                         "name": "iron_daily_value_per_serving",
                         "type": "text",
@@ -709,7 +1184,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd99",
+                        "key": "field_5f67d4a15bcd7",
+                        "label": "Iron % Daily Value Per Pint",
+                        "name": "iron_daily_value_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcd8",
                         "label": "Potassium Per Serving",
                         "name": "potassium_per_serving",
                         "type": "text",
@@ -728,7 +1222,26 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd9a",
+                        "key": "field_5f67d4a15bcd9",
+                        "label": "Potassium Per Pint",
+                        "name": "potassium_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f67d4a15bcda",
                         "label": "Poassium % Daily Value Per Serving",
                         "name": "poassium_daily_value_per_serving",
                         "type": "text",
@@ -747,7 +1260,7 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd9b",
+                        "key": "field_5f67d4a15bcdb",
                         "label": "Vitamin A",
                         "name": "vitamin_a",
                         "type": "text",
@@ -766,7 +1279,7 @@
                         "maxlength": ""
                     },
                     {
-                        "key": "field_5f67d5dc5bd9c",
+                        "key": "field_5f67d4a15bcdc",
                         "label": "Vitamin A % Daily Value",
                         "name": "vitamin_a_daily_value_per_serving",
                         "type": "text",
@@ -797,7 +1310,7 @@
             ]
         ],
         "menu_order": 0,
-        "position": "acf_after_title",
+        "position": "normal",
         "style": "default",
         "label_placement": "top",
         "instruction_placement": "label",

@@ -115,13 +115,14 @@ function upload_cedarcrest_data() {
   $headers = [];
 
   // prep the data
-  $count = 0;
+  $rowCount = 0;
   while( !feof($file) ) {
     $row = fgetcsv($file);
     // set headers
-    if ($count === 0) {
+    if ($rowCount === 0) {
       $headers = $row;
-      $count++;
+      $rowCount++;
+      $debug['headers'][] = $headers;
       continue; // skip to body of data
     }
     
@@ -136,17 +137,22 @@ function upload_cedarcrest_data() {
 
     $colCount = 0;
     foreach($row as $col) {
-      $key = $headers[$colCount];
-      if (strpos($key, 'category--') !== false) {
-        if ( strtolower( $col ) === 'x' ) {
-          $products[$title]['cats'][] = str_replace('category--', '', $key);
+      if (isset($col)) {
+        if (isset($headers[$colCount])) {
+          $key = $headers[$colCount];
+          if (strpos($key, 'category--') !== false) {
+            if ( strtolower( $col ) === 'x' ) {
+              $products[$title]['cats'][] = str_replace('category--', '', $key);
+            }
+          } else {
+            $products[$title]['sizes'][$size][$key] = $col;
+          }
         }
-      } else {
-        $products[$title]['sizes'][$size][$key] = $col;
       }
       $colCount++;
     }
-    $count++;
+
+    $rowCount++;
   }
   fclose($file);
 
@@ -159,7 +165,7 @@ function upload_cedarcrest_data() {
 
     // add cats to post
     $catSlugs = [];
-    if ($product['cats']) {
+    if (isset($product['cats'])) {
       foreach ($product['cats'] as $cat) {
         $catSlugs[] = strtolower( preg_replace('/\s+/', '_', trim( $cat )) );
       }
@@ -168,21 +174,19 @@ function upload_cedarcrest_data() {
       wp_set_object_terms($newPostId, $catSlugs, 'product_cat', true);
     }
     
-    // populate ACF Repeater fields
-    if ($product['sizes']) {
-
+  //   // populate ACF Repeater fields
+    if (isset($product['sizes'])) {
       // somehow we need to do it by this order:
-      // $order = ['three_gallon', 'scround', 'quart', 'pint', 'cup'];
-      // foreach($order as $o) {
-      //   $size = $product['sizes'][$o];
-      //   if ($size) {
-      //     $debug[] = $size;
-      //     // add_row('sizes', $fields, $newPostId);
-      //   }
-      // }
-
-      foreach($product['sizes'] as $size => $fields) {
-        add_row('sizes', $fields, $newPostId);
+      $order = ['three_gallon', 'scround', 'quart', 'pint', 'cup'];
+      foreach($order as $o) {
+        if (isset($product['sizes'])) {
+          if (isset($product['sizes'][$o])) {
+            if (isset($product['sizes'][$o])) {
+              $size = $product['sizes'][$o];
+              add_row('sizes', $size, $newPostId);
+            }
+          }
+        }
       }
     }
   }
