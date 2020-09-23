@@ -161,7 +161,7 @@ function upload_cedarcrest_data() {
     // create new product post
     $newPostId = wp_insert_post( $product['args'] );
 
-    update_post_meta($newPostId, '_price', 3.99);
+    update_post_meta($newPostId, '_regular_price', 3.99);
 
     // add cats to post
     $catSlugs = [];
@@ -174,19 +174,12 @@ function upload_cedarcrest_data() {
       wp_set_object_terms($newPostId, $catSlugs, 'product_cat', true);
     }
     
-  //   // populate ACF Repeater fields
-    if (isset($product['sizes'])) {
-      // somehow we need to do it by this order:
-      $order = ['three_gallon', 'scround', 'quart', 'pint', 'cup'];
-      foreach($order as $o) {
-        if (isset($product['sizes'])) {
-          if (isset($product['sizes'][$o])) {
-            if (isset($product['sizes'][$o])) {
-              $size = $product['sizes'][$o];
-              add_row('sizes', $size, $newPostId);
-            }
-          }
-        }
+    // populate ACF Repeater fields 
+    $order = ['three_gallon', 'scround', 'quart', 'pint', 'cup'];
+    foreach($order as $o) {
+      if (isset($product['sizes']) && isset($product['sizes'][$o])) {
+        $size = $product['sizes'][$o];
+        add_row('sizes', $size, $newPostId);
       }
     }
   }
