@@ -55,11 +55,11 @@
                             "id": ""
                         },
                         "choices": {
-                            "cup": "cup",
-                            "pint": "pint",
-                            "quart": "quart",
-                            "scround": "scround",
-                            "three_gallon": "three_gallon"
+                            "cup": "Cup",
+                            "pint": "Pint",
+                            "quart": "Quart",
+                            "scround": "Scround",
+                            "three_gallon": "3 Gallon"
                         },
                         "default_value": false,
                         "allow_null": 0,
