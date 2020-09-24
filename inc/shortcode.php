@@ -15,9 +15,10 @@ function renderModal($catsFilters, $sizeFilters) { ?>
             <button id="<?php echo CCREST_FLAVOR_FINDER_PLUGIN_SLUG; ?>-reset-filters" type-="button">reset</button>
           </div>
           <h3>Filter by</h3>
-          <?php echo $catsFilters; ?>
-          <h3>Size</h3>
-          <?php echo $sizeFilters; ?>
+          <?php 
+            echo $catsFilters; 
+            echo $sizeFilters; 
+          ?>
         </form>
       </div>
     </div> 
@@ -74,15 +75,18 @@ function ccrest_flavor_finder_shorcode_func( $atts ) {
   $catsFilters = '<ul class="'.CCREST_FLAVOR_FINDER_PLUGIN_SLUG.'-filterset">' . $catsHTML . '</ul>';
 
 
-  $sizes = ['three_gallon', 'scround', 'quart', 'pint', 'cup'];
+  
   $sizesHTML = '';
-  foreach ($sizes as $size) {
-    $sizesHTML .= '<li>';
-    $sizesHTML .= '<input class="size" id="'. $size.'" name="'. $size.'" value="'. $size.'" type="checkbox">';
-    $sizesHTML .= '<label for="'. $size.'">' .  $size . '</label><br>';
-    $sizesHTML .=  '</li>';
+  $sizeACFField = get_field_object('field_5f67d4a05bc96');
+  if ($sizeACFField && isset($sizeACFField['choices'])) {
+    foreach ($sizeACFField['choices'] as $size => $label) {
+      $sizesHTML .= '<li>';
+      $sizesHTML .= '<input class="size" id="'. $size.'" name="'. $size.'" value="'. $size.'" type="checkbox">';
+      $sizesHTML .= '<label for="'. $size.'">' .  $label . '</label><br>';
+      $sizesHTML .=  '</li>';
+    }
+    $sizeFilters = '<h3>Size</h3><ul class="'.CCREST_FLAVOR_FINDER_PLUGIN_SLUG.'-filterset">' . $sizesHTML . '</ul>';
   }
-  $sizeFilters = '<ul class="'.CCREST_FLAVOR_FINDER_PLUGIN_SLUG.'-filterset">' . $sizesHTML . '</ul>';
 
   add_action( 'wp_footer', function () use ($catsFilters, $sizeFilters) { 
     renderModal($catsFilters, $sizeFilters);
