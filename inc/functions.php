@@ -24,11 +24,7 @@ function ccff_find_size($target) {
  */
 function search_products() {
   $cats = !empty($_POST['cats']) ? $_POST['cats'] : false;
-  $allergens = !empty($_POST['allergens']) ? $_POST['allergens'] : false;
-  // $postsPerPage = $_POST['postsPerPage'] ? intval($_POST['postsPerPage']) : 12;
-  // $paged = $_POST['paged'] ? intval($_POST['paged']) : 0;
-  // $includeMeta = $_POST['includeMeta'] === 'true' ? boolval($_POST['includeMeta']) : false;
-  // $debug = $_POST['debug'] === 'true' ? boolval($_POST['debug']) : false;
+  $sizes = !empty($_POST['sizes']) ? $_POST['sizes'] : false;
 
   $results = [
     'data' => [],
@@ -39,8 +35,6 @@ function search_products() {
   $search_args = array(
     'post_type' => 'product',
     'posts_per_page' => -1,
-    // 'posts_per_page' => $postsPerPage,
-    // 'paged' => $paged,
     'orderby' => 'title',
     'order' => 'ASC',
     's' => $_POST['s'],
@@ -52,17 +46,22 @@ function search_products() {
   if ( $query->have_posts() ):
     $results['total'] = $query->found_posts;
     while ( $query->have_posts() ) : $query->the_post();
-      // if product includes allergen, skip it
-      $allergensString = strtolower ( get_field('allergens', get_the_id()) );
-      if ($allergens && count($allergens) > 0) {
-        $found = false;
-        foreach ($allergens as $al) {
-          if (strpos($allergensString, strtolower($al)) !== false) {
-            $found = true;
+      
+      // check sizes
+      if($sizes && have_rows('sizes') ):
+        $sizeFound = false;
+        while ( have_rows('sizes') ) : the_row();
+          $acfSize = get_sub_field('size');
+          if ($acfSize && in_array($acfSize, $sizes)) {
+            $results['debug'][] = $acfSize . ' FOUND';
+            $sizeFound = true;
+            break;
           }
-        }
-        if ($found) continue;
-      }
+        endwhile;
+        if (!$sizeFound) 
+          continue;
+      endif;
+
       // create product result
       $product   = wc_get_product( get_the_ID() );
       $image_id  = $product->get_image_id();

@@ -15,7 +15,7 @@
   const $searchInput = $modal.find(`#${CCREST_FLAVOR_FINDER_PLUGIN_SLUG}-search`)
   const $checkboxes = $modal.find('[type=checkbox]')
   const $catCheckboxes = $modal.find('[type=checkbox].cat')
-  const $allergenCheckboxes = $modal.find('[type=checkbox].allergen')
+  const $sizeCheckboxes = $modal.find('[type=checkbox].size')
 
   let results = []
 
@@ -74,7 +74,7 @@
       .map(function() { return $(this).val().trim() })
       .get()
       .join(',')
-    const allergens = $allergenCheckboxes
+    const sizes = $sizeCheckboxes
       .filter(function() { return $(this).attr('checked') })
       .map(function() { return $(this).val().trim() })
       .get()
@@ -86,11 +86,12 @@
         do: `search_products`,
         s,
         cats,
-        allergens,
+        sizes,
       }
     })
     .then(res => {
       const json = JSON.parse(res)
+      console.log(json)
       if (json && json.status === 200) {
         results = json.data
         toggleResultStatsDisplay(true)

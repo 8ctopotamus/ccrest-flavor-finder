@@ -1,6 +1,6 @@
 <?php
 
-function renderModal($allergensFilters, $catsFilters) { ?>
+function renderModal($catsFilters, $sizeFilters) { ?>
   <div id="<?php echo CCREST_FLAVOR_FINDER_PLUGIN_SLUG; ?>-modal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
@@ -16,8 +16,8 @@ function renderModal($allergensFilters, $catsFilters) { ?>
           </div>
           <h3>Filter by</h3>
           <?php echo $catsFilters; ?>
-          <!-- <h3>Exclude the following allergens</h3>
-          <?php echo $allergensFilters; ?> -->
+          <h3>Size</h3>
+          <?php echo $sizeFilters; ?>
         </form>
       </div>
     </div> 
@@ -73,8 +73,19 @@ function ccrest_flavor_finder_shorcode_func( $atts ) {
   }
   $catsFilters = '<ul class="'.CCREST_FLAVOR_FINDER_PLUGIN_SLUG.'-filterset">' . $catsHTML . '</ul>';
 
-  add_action( 'wp_footer', function () use ($allergensFilters, $catsFilters) { 
-    renderModal($allergensFilters, $catsFilters);
+
+  $sizes = ['three_gallon', 'scround', 'quart', 'pint', 'cup'];
+  $sizesHTML = '';
+  foreach ($sizes as $size) {
+    $sizesHTML .= '<li>';
+    $sizesHTML .= '<input class="size" id="'. $size.'" name="'. $size.'" value="'. $size.'" type="checkbox">';
+    $sizesHTML .= '<label for="'. $size.'">' .  $size . '</label><br>';
+    $sizesHTML .=  '</li>';
+  }
+  $sizeFilters = '<ul class="'.CCREST_FLAVOR_FINDER_PLUGIN_SLUG.'-filterset">' . $sizesHTML . '</ul>';
+
+  add_action( 'wp_footer', function () use ($catsFilters, $sizeFilters) { 
+    renderModal($catsFilters, $sizeFilters);
   });
 
   return '<div id="'.CCREST_FLAVOR_FINDER_PLUGIN_SLUG.'"> 
