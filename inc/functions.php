@@ -121,7 +121,6 @@ function upload_cedarcrest_data() {
     if ($rowCount === 0) {
       $headers = $row;
       $rowCount++;
-      $debug['headers'][] = $headers;
       continue; // skip to body of data
     }
     
@@ -143,6 +142,10 @@ function upload_cedarcrest_data() {
             if ( strtolower( $col ) === 'x' ) {
               $products[$title]['cats'][] = str_replace('category--', '', $key);
             }
+          } else if (strpos($key, 'allergy_icons--') !== false) {
+            if ( strtolower( $col ) === 'x' ) {
+              $products[$title]['sizes'][$size]['allergy_icons'][] = str_replace('allergy_icons--', '', $key);
+            }
           } else {
             $products[$title]['sizes'][$size][$key] = $col;
           }
@@ -160,8 +163,8 @@ function upload_cedarcrest_data() {
     // create new product post
     $newPostId = wp_insert_post( $product['args'] );
 
-    update_post_meta($newPostId, '_price', 3.99);
-    update_post_meta($newPostId, '_regular_price', 3.99);
+    update_post_meta($newPostId, '_price', 3.00);
+    update_post_meta($newPostId, '_regular_price', 3.00);
 
     // add cats to post
     $catSlugs = [];
