@@ -163,8 +163,8 @@ function upload_cedarcrest_data() {
     // create new product post
     $newPostId = wp_insert_post( $product['args'] );
 
-    update_post_meta($newPostId, '_price', 3.00);
-    update_post_meta($newPostId, '_regular_price', 3.00);
+    update_post_meta($newPostId, '_price', 4.00);
+    update_post_meta($newPostId, '_regular_price', 4.00);
 
     // add cats to post
     $catSlugs = [];
