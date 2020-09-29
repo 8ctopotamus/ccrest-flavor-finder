@@ -14,11 +14,12 @@ function renderModal($catsFilters, $sizeFilters) { ?>
             <button type="submit">Search</button>
             <button id="<?php echo CCREST_FLAVOR_FINDER_PLUGIN_SLUG; ?>-reset-filters" type-="button">reset</button>
           </div>
-          <h3>Filter by</h3>
+          <div class="ccrest-flavor-finder-filters-wrap">
           <?php 
             echo $catsFilters; 
             echo $sizeFilters; 
           ?>
+          </div>
         </form>
       </div>
     </div> 
@@ -28,34 +29,8 @@ function renderModal($catsFilters, $sizeFilters) { ?>
 add_shortcode( CCREST_FLAVOR_FINDER_PLUGIN_SLUG, 'ccrest_flavor_finder_shorcode_func' );
 function ccrest_flavor_finder_shorcode_func( $atts ) {
   global $wpdb;
- 
-  // build allergen filter options
-  $allergensACF = $wpdb->get_col( $wpdb->prepare("
-    SELECT pm.meta_value FROM {$wpdb->postmeta} pm
-    LEFT JOIN {$wpdb->posts} p ON p.ID = pm.post_id
-    WHERE pm.meta_key = %s 
-    AND p.post_status = %s 
-    AND p.post_type = %s
-  ", 'allergens', 'publish', 'product' ) );
 
-  $allergens = [];
-  foreach($allergensACF as $a) {
-    $words = explode(',', $a);
-    foreach($words as $w) {
-      if (!in_array($w, $allergens))
-        $allergens[] = $w;
-    }
-  }
-  $allergensHTML = '';
-  foreach($allergens as $allergen) {
-    $allergensHTML .= '<li>';
-    $allergensHTML .= '<input class="allergen" id="'.$allergen.'" name="'.$allergen.'" value="'.$allergen.'" type="checkbox" >';
-    $allergensHTML .= '<label for="'.$allergen.'">' . $allergen . '</label><br>';
-    $allergensHTML .=  '</li>';
-  }
-  $allergensFilters = '<ul class="'.CCREST_FLAVOR_FINDER_PLUGIN_SLUG.'-filterset">' . $allergensHTML . '</ul>';
-
-  // build category filter options
+  // categories
   $cat_args = array(
     'orderby'    => 'name',
     'order'      => 'asc',
@@ -66,26 +41,34 @@ function ccrest_flavor_finder_shorcode_func( $atts ) {
   $catsHTML = '';
   if( !empty($product_categories) ) {
     foreach ($product_categories as $key => $category) {
-      $catsHTML .= '<li>';
-      $catsHTML .= '<input class="cat" id="'.$category->slug.'" name="'.$category->slug.'" value="'.$category->slug.'" type="checkbox">';
-      $catsHTML .= '<label for="'.$category->slug.'">' . $category->name . '</label><br>';
-      $catsHTML .=  '</li>';
+      $catsHTML .= '<div>';
+        $catsHTML .= '<label class="ccff-checkbox-container" for="'.$category->slug.'">';
+          $catsHTML .= $category->name;
+          $catsHTML .= '<input class="cat" id="'.$category->slug.'" name="'.$category->slug.'" value="'.$category->slug.'" type="checkbox">';
+          $catsHTML .= '<span class="checkmark"></span>';
+        $catsHTML .= '</label>';
+      $catsHTML .=  '</div>';
     }
   }
-  $catsFilters = '<ul class="'.CCREST_FLAVOR_FINDER_PLUGIN_SLUG.'-filterset">' . $catsHTML . '</ul>';
+  $catsFilters = '<fieldset class="'.CCREST_FLAVOR_FINDER_PLUGIN_SLUG.'-fieldset grid"><legend>CATEGORY</legend>' . $catsHTML . '</fieldset>';
 
-
-  
+  // sizes 
   $sizesHTML = '';
   $sizeACFField = get_field_object('field_5f67d4a05bc96');
   if ($sizeACFField && isset($sizeACFField['choices'])) {
     foreach ($sizeACFField['choices'] as $size => $label) {
-      $sizesHTML .= '<li>';
-      $sizesHTML .= '<input class="size" id="'. $size.'" name="'. $size.'" value="'. $size.'" type="checkbox">';
-      $sizesHTML .= '<label for="'. $size.'">' .  $label . '</label><br>';
-      $sizesHTML .=  '</li>';
+      $sizesHTML .= '<div>';
+        $sizesHTML .= '<label class="ccff-checkbox-container" for="'. $size.'">';
+          $sizesHTML .= $size;
+          $sizesHTML .= '<input class="size" id="'. $size.'" name="'. $size.'" value="'. $size.'" type="checkbox">';
+          $sizesHTML .= '<span class="checkmark"></span>';
+        $sizesHTML .= '</label>';
+      $sizesHTML .=  '</div>';
     }
-    $sizeFilters = '<h3>Size</h3><ul class="'.CCREST_FLAVOR_FINDER_PLUGIN_SLUG.'-filterset">' . $sizesHTML . '</ul>';
+    $sizeFilters = '<fieldset class="'.CCREST_FLAVOR_FINDER_PLUGIN_SLUG.'-fieldset">
+      <legend>CONTAINER</legend>
+      ' . $sizesHTML . '
+    </fieldset>';
   }
 
   add_action( 'wp_footer', function () use ($catsFilters, $sizeFilters) { 
