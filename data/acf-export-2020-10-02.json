@@ -59,7 +59,8 @@
                             "pint": "Pint",
                             "quart": "Quart",
                             "scround": "Scround",
-                            "three_gallon": "3 Gallon"
+                            "three_gallon": "3 Gallon",
+                            "four_quart": "4 Quart"
                         },
                         "default_value": false,
                         "allow_null": 0,
