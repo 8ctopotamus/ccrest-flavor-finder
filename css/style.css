@@ -373,3 +373,21 @@
     display: block;
   }
 }
+
+@media (max-width: 767px) {
+	.modal-title {
+		padding: 10px;
+		font-size: 32px;
+	}
+	.ccrest-flavor-finder-search-wrap {
+		display: block;
+		border: none;
+	}
+	.ccrest-flavor-finder-search-wrap > * {
+		width: 100%;
+		margin: 10px 0;
+	}
+	.ccrest-flavor-finder-search-wrap input[type="search"] {
+		border: 2px solid var(--brand-dark);
+	}
+}
