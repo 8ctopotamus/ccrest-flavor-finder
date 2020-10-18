@@ -70,14 +70,16 @@
     closeModal()
     const s = $searchInput.val().trim()
     const cats = $catCheckboxes
-      .filter(function() { return $(this).attr('checked') })
+      .filter(function() { return $(this).get(0).checked })
       .map(function() { return $(this).val().trim() })
       .get()
       .join(',')
+
     const sizes = $sizeCheckboxes
-      .filter(function() { return $(this).attr('checked') })
+      .filter(function() { return $(this).get(0).checked })
       .map(function() { return $(this).val().trim() })
       .get()
+
     $.ajax({
       url: ADMIN_AJAX_URL,
       type: `POST`,
