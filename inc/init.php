@@ -30,44 +30,6 @@ function ccrest_woo_filter_init() {
   }
 }
 
-// Admin Toolbar buttons
-add_action('admin_bar_menu', 'add_ccrest_item', 100);
-function add_ccrest_item( $admin_bar ){
-  global $pagenow;
-	$admin_bar->add_menu( array( 'id' => 'ccrest-import', 'title' => 'Import Cedarcrest Data', 'href' => '#' ) );
-}
-
-// Admin Toolbar buttons events
-add_action( 'admin_footer', 'ccrest_custom_toolbar_actions' );
-function ccrest_custom_toolbar_actions() { ?>
-  <script type="text/javascript">
-		jQuery("li#wp-admin-bar-ccrest-import .ab-item").on('click', function() {
-			const confirmation = confirm('You are about to overwrite all CedarCrest Woocommerce data.');
-			$btn = jQuery(this);
-      $btn.text('Importing... please be patient 😁')
-			jQuery.post(
-				'<?php echo esc_url( admin_url('admin-post.php') ); ?>',
-				{ 
-					action: 'ccrest_woo_filter_actions',
-					do: 'upload_cedarcrest_data',
-				},
-				function(response) {
-          console.log(response)
-          const res = JSON.parse(response)
-					if (res && res.success === true) {
-            console.log(res)
-            $btn.text('Cedarcrest data imported 👍')
-					} else {
-            $btn.text('Import Cedarcrest Data')
-						console.error(res)
-						alert('Plow import failed :(')
-					}
-				},
-			);
-		});
-  </script>
-<?php }
-
 function ccrest_woo_filter_enqueue_scripts_styles() {
   // check if shorcode is used
   global $post, $wpdb;
