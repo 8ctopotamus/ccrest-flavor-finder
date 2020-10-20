@@ -1243,8 +1243,27 @@
                     },
                     {
                         "key": "field_5f67d4a15bcda",
-                        "label": "Poassium % Daily Value Per Serving",
-                        "name": "poassium_daily_value_per_serving",
+                        "label": "Potassium % Daily Value Per Serving",
+                        "name": "potassium_daily_value_per_serving",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f7f5aea27606",
+                        "label": "Potassium % Daily Value Per Pint",
+                        "name": "potassium_daily_value_per_pint",
                         "type": "text",
                         "instructions": "",
                         "required": 0,
@@ -1283,6 +1302,44 @@
                         "key": "field_5f67d4a15bcdc",
                         "label": "Vitamin A % Daily Value",
                         "name": "vitamin_a_daily_value_per_serving",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f8ef08346aba",
+                        "label": "Vitamin A Per Pint",
+                        "name": "vitamin_a_per_pint",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5f8ef09546abb",
+                        "label": "Vitamin A % Daily Value Per Pint",
+                        "name": "vitamin_a_daily_value_per_pint",
                         "type": "text",
                         "instructions": "",
                         "required": 0,
